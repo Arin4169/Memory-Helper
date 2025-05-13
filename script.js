@@ -37,6 +37,22 @@ document.addEventListener('DOMContentLoaded', function() {
     let openaiApiKey = '';
     let currentChatContext = [];
     let isAnalyzingImage = false;
+    
+    // Sample images
+    const samplePhotos = [
+        {
+            name: '샘플 사진 1',
+            path: 'gallery/20250411_2352_Harmonious Human-Robot Interaction_simple_compose_01jrjna5yvfw58efmqckfg0ezp.png'
+        },
+        {
+            name: '샘플 사진 2',
+            path: 'gallery/p7.png'
+        },
+        {
+            name: '샘플 사진 3',
+            path: 'gallery/SDGs5.png'
+        }
+    ];
 
     // Check for local storage
     initializeFromStorage();
@@ -72,15 +88,53 @@ document.addEventListener('DOMContentLoaded', function() {
             if (photos.length > 0) {
                 loadRandomPhoto();
             } else {
-                // Show placeholder if no photos
-                mainPhoto.src = 'placeholder.jpg';
-                photoInfo.textContent = '추억의 사진을 추가해주세요';
+                // No stored photos, load sample photos
+                loadSamplePhotos();
             }
         } else {
-            // First time usage
-            mainPhoto.src = 'placeholder.jpg';
-            photoInfo.textContent = '추억의 사진을 추가해주세요';
+            // First time usage, load sample photos
+            loadSamplePhotos();
         }
+    }
+    
+    function loadSamplePhotos() {
+        // Only load sample photos if we don't have any photos yet
+        if (photos.length === 0) {
+            samplePhotos.forEach(samplePhoto => {
+                loadImageAsDataURL(samplePhoto.path, function(dataUrl) {
+                    const photoData = {
+                        id: Date.now() + Math.random().toString(36).substr(2, 9),
+                        src: dataUrl,
+                        date: new Date().toISOString(),
+                        name: samplePhoto.name
+                    };
+                    
+                    photos.push(photoData);
+                    saveToStorage();
+                    renderPhotoGallery();
+                    
+                    // Load the first photo when it's ready
+                    if (photos.length === 1) {
+                        loadPhoto(0);
+                    }
+                });
+            });
+        }
+    }
+    
+    function loadImageAsDataURL(url, callback) {
+        const img = new Image();
+        img.crossOrigin = 'Anonymous';
+        img.onload = function() {
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            const dataURL = canvas.toDataURL('image/png');
+            callback(dataURL);
+        };
+        img.src = url;
     }
     
     function loadApiKey() {
