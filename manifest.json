@@ -1,9 +1,8 @@
-
-
 {
-  "name": "치매 어르신 기억 도우미",
-  "short_name": "기억도우미",
+  "name": "Memory Helper - 치매 어르신 기억 도우미",
+  "short_name": "Memory Helper",
   "start_url": "./index.html",
+  "scope": "/Memory-Helper/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#3e8ed0",

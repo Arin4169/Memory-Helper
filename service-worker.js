@@ -1,15 +1,15 @@
-
-
 self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open('memory-helper').then(function (cache) {
       return cache.addAll([
-        '/',
-        '/index.html',
-        '/style.css',
-        '/script.js',
-        '/icon-192.png',
-        '/icon-512.png'
+        '/Memory-Helper/',
+        '/Memory-Helper/index.html',
+        '/Memory-Helper/style.css',
+        '/Memory-Helper/script.js',
+        '/Memory-Helper/icon-192.png',
+        '/Memory-Helper/icon-512.png',
+        '/Memory-Helper/placeholder.jpg',
+        '/Memory-Helper/manifest.json'
       ]);
     })
   );
