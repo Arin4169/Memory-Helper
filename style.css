@@ -39,6 +39,17 @@ h1 {
     letter-spacing: 1px;
 }
 
+.app-title {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.app-title:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
 h2 {
     font-size: 28px;
     margin: 20px 0;

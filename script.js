@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatScreen = document.getElementById('chat-screen');
     const mainPhoto = document.getElementById('main-photo');
     const photoInfo = document.querySelector('.photo-info');
+    const appTitle = document.getElementById('app-title');
     
     // Elements - Gallery
     const photoUpload = document.getElementById('photo-upload');
@@ -59,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadApiKey();
     
     // Event Listeners - Navigation
+    appTitle.addEventListener('click', showMain);
     showGalleryBtn.addEventListener('click', showGallery);
     backToMainBtn.addEventListener('click', showMain);
     loadRandomBtn.addEventListener('click', loadRandomPhoto);
