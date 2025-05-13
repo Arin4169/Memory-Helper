@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Memory Helper - 치매 어르신 기억 도우미</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3e8ed0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="icon" href="icon-192.png">
+</head>
+<body>
+    <header>
+        <h1>Memory Helper</h1>
+        <div id="api-settings" class="api-settings">
+            <button id="show-api-settings" class="settings-button">설정</button>
+            <div id="api-settings-panel" class="settings-panel hidden">
+                <div class="input-group">
+                    <label for="openai-api-key">OpenAI API 키:</label>
+                    <input type="password" id="openai-api-key" placeholder="sk-...">
+                </div>
+                <div class="settings-buttons">
+                    <button id="save-api-key" class="large-button primary">저장</button>
+                    <button id="cancel-api-key" class="large-button">취소</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 메인 화면 -->
+        <section id="main-screen">
+            <div class="photo-container">
+                <img id="main-photo" src="placeholder.jpg" alt="기억의 사진">
+                <div class="photo-info">추억의 사진</div>
+            </div>
+            
+            <div class="main-buttons">
+                <button id="start-chat-main" class="large-button primary">대화 시작하기</button>
+                <button id="show-gallery" class="large-button secondary">사진 갤러리 보기</button>
+                <button id="load-random" class="large-button">다른 사진 보기</button>
+            </div>
+        </section>
+
+        <!-- 갤러리 화면 -->
+        <section id="gallery-screen" class="hidden">
+            <h2>추억의 사진첩</h2>
+            <div id="photos-container" class="photos-grid">
+                <!-- Photos will be loaded here -->
+                <div class="upload-box">
+                    <label for="photo-upload" class="upload-button">
+                        <span>사진 추가하기</span>
+                    </label>
+                    <input type="file" id="photo-upload" accept="image/*" multiple hidden>
+                </div>
+            </div>
+            <button id="back-to-main" class="large-button secondary">처음으로 돌아가기</button>
+        </section>
+
+        <!-- 대화 화면 -->
+        <section id="chat-screen" class="hidden">
+            <div class="chat-container">
+                <div class="current-photo-small">
+                    <img id="chat-photo" src="" alt="대화 중인 사진">
+                </div>
+                <div id="chat-messages"></div>
+                <div class="chat-input">
+                    <input type="text" id="user-message" placeholder="대화를 입력하세요..." class="user-input">
+                    <button id="send-message" class="large-button primary">전송</button>
+                    <button id="back-from-chat" class="large-button secondary">사진으로 돌아가기</button>
+                </div>
+            </div>
+            <div id="loading-indicator" class="loading-indicator hidden">
+                <div class="spinner"></div>
+                <span>분석 중...</span>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Memory Helper - 치매 어르신과 함께하는 소중한 추억</p>
+    </footer>
+
+    <script>
+        // 사용자가 스크린을 두 번 탭하거나 핀치 줌을 사용하는 것을 방지
+        document.addEventListener('gesturestart', function (e) {
+            e.preventDefault();
+        });
+        
+        // 서비스 워커 등록
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html> 

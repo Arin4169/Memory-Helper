@@ -1,0 +1,481 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Nanum Gothic', 'Malgun Gothic', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f8f8;
+    padding: 0;
+    margin: 0;
+    max-width: 100vw;
+    overflow-x: hidden;
+    touch-action: manipulation;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Header Styles */
+header {
+    background-color: #3e8ed0;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+h1 {
+    font-size: 32px;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 28px;
+    margin: 20px 0;
+    text-align: center;
+    color: #3e8ed0;
+}
+
+/* API Settings */
+.api-settings {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.settings-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
+    min-height: 44px;
+}
+
+.settings-button:hover, .settings-button:active {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.settings-panel {
+    position: fixed;
+    top: 70px;
+    left: 5%;
+    right: 5%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    z-index: 1000;
+    width: 90%;
+    max-width: 450px;
+    margin: 0 auto;
+    color: #333;
+    text-align: left;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 18px;
+    min-height: 50px;
+}
+
+.settings-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+/* Main Content */
+main {
+    padding: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Main Screen */
+#main-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.photo-container {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+#main-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+}
+
+.photo-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.main-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Gallery Screen */
+#gallery-screen {
+    padding-bottom: 30px;
+}
+
+.photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.photo-item {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+    background: white;
+    height: 140px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.photo-item:active {
+    transform: scale(0.95);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-box {
+    height: 140px;
+    border: 3px dashed #3e8ed0;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(62, 142, 208, 0.1);
+}
+
+.upload-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    color: #3e8ed0;
+    -webkit-tap-highlight-color: transparent;
+    padding: 20px;
+}
+
+/* Chat Screen */
+.chat-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-top: 15px;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.current-photo-small {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.current-photo-small img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#chat-messages {
+    flex: 1;
+    min-height: 50vh;
+    margin-bottom: 15px;
+    overflow-y: auto;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+}
+
+.message {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 18px;
+    max-width: 85%;
+    font-size: 18px;
+    word-break: break-word;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.user-message {
+    background-color: #3e8ed0;
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+    border-bottom-right-radius: 5px;
+}
+
+.bot-message {
+    background-color: #f0f0f0;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
+.chat-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.user-input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-size: 16px;
+    min-height: 50px;
+    background-color: #f5f5f5;
+}
+
+/* Loading Indicator */
+.loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3e8ed0;
+    animation: spin 1.5s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Buttons */
+.large-button {
+    padding: 18px 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.2s, transform 0.1s;
+    width: 100%;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 60px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.large-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.primary {
+    background-color: #3e8ed0;
+    color: white;
+}
+
+.primary:hover, .primary:active {
+    background-color: #3272a9;
+}
+
+.secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.secondary:hover, .secondary:active {
+    background-color: #5a6268;
+}
+
+/* Hidden Elements */
+.hidden {
+    display: none !important;
+}
+
+/* Footer */
+footer {
+    background-color: #3e8ed0;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    
+    header {
+        padding: 12px 10px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    h2 {
+        font-size: 24px;
+        margin: 15px 0;
+    }
+    
+    .api-settings {
+        top: 12px;
+        right: 12px;
+    }
+    
+    main {
+        padding: 10px;
+    }
+    
+    .photos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .large-button {
+        padding: 15px;
+        font-size: 18px;
+        min-height: 55px;
+    }
+    
+    .user-input {
+        padding: 12px 15px;
+    }
+    
+    .message {
+        padding: 12px 15px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    .photos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .photo-item, .upload-box {
+        height: 120px;
+    }
+    
+    .large-button {
+        padding: 14px;
+        font-size: 16px;
+        min-height: 50px;
+    }
+    
+    .user-input {
+        padding: 12px;
+    }
+    
+    .message {
+        padding: 12px;
+        font-size: 15px;
+        max-width: 90%;
+    }
+    
+    .settings-panel {
+        width: 94%;
+        padding: 15px;
+    }
+    
+    .main-buttons {
+        gap: 12px;
+    }
+} 
